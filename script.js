@@ -33,18 +33,22 @@ function deleteTask(i) {
 }
 
 function loadTasksFromStorage() {
+    if (!localStorage.getItem("tasks")) {
+        return;
+    }
+
     allTasks = JSON.parse(localStorage.getItem("tasks"));
-    console.log("loadtaskfromstorage", allTasks);
+    console.log("loadTasksFromStorage", allTasks);
 }
 
 function savedTasksToStorage() {
     localStorage.setItem("tasks", JSON.stringify(allTasks));
-    console.log("savedtaskfromstorage", allTasks);
+    console.log("savedTasksToStorage", allTasks);
 }
 
 function check(i) {
     loadTasksFromStorage;
-    if (allTasks[i].solved) {
+    if (allTasks[i].solved == "checked='true'") {
         allTasks[i].solved = "";
     } else {
         allTasks[i].solved = "checked='true'";
@@ -68,7 +72,7 @@ function updateList() {
                 <input class="checkmark" onclick="check(${i})" type="checkbox" ${allTasks[i].solved}>
                 <span class="checkmark"></span>
                 <span class="task-description"> ${allTasks[i].description}</span>
-                <img onclick="deleteTask(${i})" class="button-img" src="/delete.png" alt="delete the task">
+                <img onclick="deleteTask(${i})" class="button-img" src="/delete.png" alt="delete the task"> delete ${i}
             </label>
         </li>`;
 
