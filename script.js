@@ -27,8 +27,7 @@ function addTask() {
 
 function deleteTask(i) {
     loadTasksFromStorage();
-    allTasks.splice(i, 1);
-    console.log("all tasks after delete", allTasks);
+    allTasks.splice(i,1);
     savedTasksToStorage();
     updateList();
 }

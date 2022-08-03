@@ -64,9 +64,5 @@ button {
     border: none !important;
     border-bottom: 1px dashed black !important;
     background-color: transparent !important;
-}
-
-#input :focus{
-    outline: none !important;
-    border: none !important;
+    width: 40vw !important;
 }
