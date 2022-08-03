@@ -6,18 +6,51 @@ function init() {
 }
 
 function addTask() {
+    loadTasksFromStorage();
     let input = document.getElementById("input");
-    let task = input.value;
+
+    let task = {
+        "description": input.value,
+        "solved": "",
+    };
+
+    if (!task.description) {
+        return;
+    }
 
     allTasks.push(task);
 
-    input.value = "";
+    savedTasksToStorage();
     updateList();
+    input.value = "";
 }
 
 function deleteTask(i) {
+    loadTasksFromStorage();
     allTasks.splice(i, 1);
+    console.log("all tasks after delete", allTasks);
+    savedTasksToStorage();
     updateList();
+}
+
+function loadTasksFromStorage() {
+    allTasks = JSON.parse(localStorage.getItem("tasks"));
+    console.log("loadtaskfromstorage", allTasks);
+}
+
+function savedTasksToStorage() {
+    localStorage.setItem("tasks", JSON.stringify(allTasks));
+    console.log("savedtaskfromstorage", allTasks);
+}
+
+function check(i) {
+    loadTasksFromStorage;
+    if (allTasks[i].solved) {
+        allTasks[i].solved = "";
+    } else {
+        allTasks[i].solved = "checked='true'";
+    }
+    savedTasksToStorage();
 }
 
 
@@ -26,13 +59,28 @@ function updateList() {
     let list = document.getElementById("list");
     list.innerHTML = "";
 
+    loadTasksFromStorage();
+
     for (let i = 0; i < allTasks.length; i++) {
         let li = document.createElement("li");
         li.innerHTML = `
         <li class="list-group-item">
-            <label>${allTasks[i]}</label>
-            <button class="btn btn-danger" onclick="deleteTask(${i})">&#10005</button>
+            <label class="container"> 
+                <input class="checkmark" onclick="check(${i})" type="checkbox" ${allTasks[i].solved}>
+                <span class="checkmark"></span>
+                <span class="task-description"> ${allTasks[i].description}</span>
+                <img onclick="deleteTask(${i})" class="button-img" src="/delete.png" alt="delete the task">
+            </label>
         </li>`;
+
+
         list.appendChild(li);
     }
 }
+
+
+document.addEventListener('keyup', (event) => {
+    if (event.code == "Enter") {
+        addTask();
+    }
+});

@@ -4,25 +4,69 @@ body {
     align-items: center;
     padding-top: 10vw;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(132, 222, 255, 0.547) !important;
 }
 
 h1 {
     font-size: 5vw;
 }
 
-button {}
+.checkmark {
+    width: 32px !important;
+    height: 32px !important;
+}
 
 .list {
-    max-width: 50vw;
     word-wrap: break-word;
 }
 
 ul {
-    list-style-type: square;
-    font-size: 24px;
+    list-style-type: none;
+    font-size: 32px;
 }
 
 li {
     margin-top: 4px;
     margin-bottom: 4px;
+}
+
+label {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-height: 40px !important;
+}
+
+.task-description{
+    width: 40vw !important;
+    padding-right: 8px !important;
+}
+
+button {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.button-img {
+    width: 32px !important;
+    height: 32px !important;
+    cursor: pointer !important;
+}
+
+.container{
+    padding: 0 !important;
+}
+
+
+
+#input {
+    margin-left: 64px !important;
+    border: none !important;
+    border-bottom: 1px dashed black !important;
+    background-color: transparent !important;
+}
+
+#input :focus{
+    outline: none !important;
+    border: none !important;
 }

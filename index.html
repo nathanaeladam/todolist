@@ -15,15 +15,17 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body onload="init()" class="container">
+<body onload="init()" class="">
     <h1>To-Do-List</h1>
 
     <ul id="">
         <div class="list" id="list">
 
         </div>
-        <input id="input"></input>
-        <button onclick="addTask()" class="btn btn-success">&#10010</button>
+        <input placeholder="add a task" id="input"></input>
+
+        <img onclick="addTask()" class="button-img" src="/add.png" alt="add the task">
+
     </ul>
 </body>
 
