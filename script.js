@@ -26,34 +26,41 @@ function addTask() {
 }
 
 function deleteTask(i) {
+    console.log("delete started");
     loadTasksFromStorage();
-    allTasks.splice(i,1);
+    console.log("loaded task in delete progress", allTasks);
+    allTasks.splice(i, 1);
+    console.log("alltaskt after splice in delete progress", allTasks);
     savedTasksToStorage();
+    console.log("saved task in delete progress", allTasks);
     updateList();
 }
 
 function loadTasksFromStorage() {
+
+    //termination condition 
     if (!localStorage.getItem("tasks")) {
         return;
     }
 
     allTasks = JSON.parse(localStorage.getItem("tasks"));
-    console.log("loadTasksFromStorage", allTasks);
 }
 
 function savedTasksToStorage() {
     localStorage.setItem("tasks", JSON.stringify(allTasks));
-    console.log("savedTasksToStorage", allTasks);
 }
 
 function check(i) {
     loadTasksFromStorage;
-    if (allTasks[i].solved == "checked='true'") {
+    console.log("this are the loaded task in check progress", allTasks);
+    if (!allTasks[i].solved == "") {
         allTasks[i].solved = "";
     } else {
         allTasks[i].solved = "checked='true'";
     }
+    console.log("this are the read of 'allTasks[", i, "].solved'  ", allTasks[i].solved);
     savedTasksToStorage();
+    console.log("this are the saved tasks in check progress", allTasks);
 }
 
 
@@ -72,7 +79,7 @@ function updateList() {
                 <input class="checkmark" onclick="check(${i})" type="checkbox" ${allTasks[i].solved}>
                 <span class="checkmark"></span>
                 <span class="task-description"> ${allTasks[i].description}</span>
-                <img onclick="deleteTask(${i})" class="button-img" src="/delete.png" alt="delete the task"> delete ${i}
+                <img onclick="deleteTask(${i})" class="button-img" src="/delete.png" alt="delete the task">
             </label>
         </li>`;
 
@@ -81,7 +88,7 @@ function updateList() {
     }
 }
 
-
+// add enter as a add task button.
 document.addEventListener('keyup', (event) => {
     if (event.code == "Enter") {
         addTask();
