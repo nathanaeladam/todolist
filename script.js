@@ -26,13 +26,9 @@ function addTask() {
 }
 
 function deleteTask(i) {
-    console.log("delete started");
     loadTasksFromStorage();
-    console.log("loaded task in delete progress", allTasks);
     allTasks.splice(i, 1);
-    console.log("alltaskt after splice in delete progress", allTasks);
     savedTasksToStorage();
-    console.log("saved task in delete progress", allTasks);
     updateList();
 }
 
@@ -51,7 +47,6 @@ function savedTasksToStorage() {
 }
 
 function check(i) {
-    loadTasksFromStorage;
     console.log("this are the loaded task in check progress", allTasks);
     if (!allTasks[i].solved == "") {
         allTasks[i].solved = "";
