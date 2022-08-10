@@ -47,6 +47,7 @@ function savedTasksToStorage() {
 }
 
 function check(i) {
+    loadTasksFromStorage();
     console.log("this are the loaded task in check progress", allTasks);
     if (!allTasks[i].solved == "") {
         allTasks[i].solved = "";
@@ -74,8 +75,9 @@ function updateList() {
                 <input class="checkmark" onclick="check(${i})" type="checkbox" ${allTasks[i].solved}>
                 <span class="checkmark"></span>
                 <span class="task-description"> ${allTasks[i].description}</span>
-                <img onclick="deleteTask(${i})" class="button-img" src="/delete.png" alt="delete the task">
             </label>
+            
+            <img onclick="deleteTask(${i})" class="button-img" src="/delete.png" alt="delete the task">
         </li>`;
 
 
