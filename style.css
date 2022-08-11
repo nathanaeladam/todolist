@@ -54,8 +54,16 @@ button {
     cursor: pointer !important;
 }
 
+.button-img:hover{
+    filter: brightness(0.3);
+}
+
 .container{
     padding: 0 !important;
+}
+
+li:hover{
+    transform: scale(1.01);
 }
 
 
@@ -67,3 +75,19 @@ button {
     background-color: transparent !important;
     width: 40vw !important;
 }
+
+@media screen and (max-width: 1000px) {
+    #input {
+        width: calc(80vw - 96px) !important;
+    }
+
+    .task-description {
+        width: calc(80vw - 96px) !important;
+    }
+
+    ul{
+        padding-left: 0 !important;
+
+        margin-left: 0 !important;
+    }
+  }
